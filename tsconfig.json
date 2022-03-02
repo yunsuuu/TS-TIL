@@ -1,7 +1,12 @@
 // .ts -> .js 컴파일시 옵션 설정 가능
 {
   "compilerOptions": {
-    "target": "es5", // 자바스크립트 어떤 버전으로 컴파일 할지 지정
+    "target": "es5", 
+    // 타입스크립트 파일을 어떤 버전의 자바스크립트로 바꿔줄지 정하는 부분
+    // es5 버전 자바스크립트로 컴파일(변환)해줌
     "module": "Commonjs",
+    // 자바스크립트 파일 간 import 문법을 구현할 때 어떤 문법을 쓸지 정하는 곳
+    // commonjs - require 문법(IE 호환성을 원하면 es5, commonjs 사용)
+    // es2015, esnext - import 문법
   }
 }

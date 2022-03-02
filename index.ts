@@ -10,7 +10,7 @@ let Me :string = "soo";
 let Arr :string[] = ["kim", "yun"];
 
 // 'obj'라는 변수에는 object type만 들어올 수 있음
-let Obj :{ name : string } = { name : "yun" } 
+let Obj :{ name :string } = { name : "yun" } 
 // let obj :{ name? : string } = { name : "yun" }
 // -> name 뒤에 물음표 붙으면 'name' 속성은 옵션(name이  있을 수도 있고, 없을 수도 있음)
 // let obj :{ name? : string } = { } -> name 속성이 없어도 에러 나지 않음
@@ -47,7 +47,7 @@ let yun :Member = [123, true];
 
 // 위의 코드를 아래와 같이 간결하게 바꿀 수 있음
 type Mini = {
-  [key :string] : string,
+  [key :string] :string,
   // string으로 된 모든 object 속성의 타입은 string을 가져야 함
 }
-let soo : Mini = { name : "yun"};
+let soo :Mini = { name : "yun"};
