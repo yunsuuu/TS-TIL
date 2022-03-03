@@ -56,11 +56,12 @@ age + 1;
 // string | number =  -> string | number 라는 새로운 union 타입이기 때문, 
 var 나이 = 1;
 나이 - 1; // 에러 발생 이유: 나이 = 값으로 1(number)을 줬지만 타입은 unknown이기 때문
-// homework
+// 실습
 var user = "kim";
 var age = undefined;
 var married = false;
 var 철수 = [user, age, married];
+// 실습
 var 학교 = {
     score: [100, 97, 84],
     teacher: "Phil",

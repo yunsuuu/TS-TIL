@@ -74,12 +74,13 @@ age + 1;
 let 나이 :unknown = 1;
 나이 - 1; // 에러 발생 이유: 나이 = 값으로 1(number)을 줬지만 타입은 unknown이기 때문
 
-// homework
+// 실습
 let user :string = "kim";
 let age :number | undefined = undefined;
 let married :boolean = false;
 let 철수 :(string | number | undefined| boolean)[] = [user, age, married];
 
+// 실습
 let 학교 :{ score :(number | boolean)[], teacher :string, friend :string | string[]} = {
   score: [100, 97, 84],
   teacher: "Phil",
