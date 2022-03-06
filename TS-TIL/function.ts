@@ -1,39 +1,37 @@
 // 함수는 총 두 군데 타입 지정이 가능 - 함수로 들어오는 자료(파라미터), 함수에서 나가는 자료(return)
 
-import { table } from "console";
-
 // 파라미터 괄호 안에 파라미터값에 대한 타입 지정, 파라미터 괄호 옆에 결과값에 대한 타입 지정
-function 함수(x :number) :number {
+function 함수1(x :number) :number {
   return x * 2
 }
 // 함수("6") -> 에러
-함수(6);
+함수1(6);
 
 // void 타입 - return할 자료가 없는 함수의 타입으로 사용
-function 함수(x :number) :void { // 실수로 뭔가 return 하는 것을 사전에 막을 수 있음(return 방지 장치)
+function 함수2(x :number) :void { // 실수로 뭔가 return 하는 것을 사전에 막을 수 있음(return 방지 장치)
   // return 1 + 1 // -> 에러발생
   1 + 1 // return으로 남기는 값 없이 1 + 1만 하고 싶을 때 void 사용
 }
 
 // 자바스크립트와의 차이점 - 파라미터에 타입을 지정하면 필수 파라미터가 됨
-function 함수(y :number) :void {
-  return y * 2
+function 함수3(y :number) :void {
+  y * 2
 }
 // 함수() // 에러발생
-함수(20); // 함수 호출할 때 파라미터 필수
+함수3(20); // 함수 호출할 때 파라미터 필수
 
 // 파라미터가 옵션일 경우 - 함수 호출할 때 파라미터를 넣어도 되고, 안 넣어도 되고
 // z? :number => z :number | undefined 와 같은 의미
-function 함수(z? :number) :number {
+function 함수4(z? :number) :number {
   return z * 3
 }
-함수() // 가능 -> 파라미터에 값을 넣지 않아도 에러 발생X -> 파라미터 우측에 ?를 넣어줘서
-함수(2) // 가능
+함수4() // 가능 -> 파라미터에 값을 넣지 않아도 에러 발생X -> 파라미터 우측에 ?를 넣어줘서
+함수4(2) // 가능
 
-function 함수(x :number | string) :void {
-  console.log(x + 3) // 에러발생
+function 함수5(x :number | string) :void {
+  // console.log(x + 3) // 에러발생
   // 애매한 타입들은 미리 타입 검사 필요
-  if(x의 타입이 숫자면){
+  if(typeof x === "number"){
     console.log(x + 3)
   }
 }
