@@ -15,7 +15,7 @@ const 출생지역 = { region : "seoul" }
 출생지역.region = "busan"; // 변경가능
 
 type Girlfriend = {
-  readonly name : String // readonly - 읽기전용, 선언해준 순간부터 수정 불가
+  readonly name : String // readonly - 읽기전용, 선언한 순간부터 수정 불가
 }
 
 const gf :Girlfriend = {
@@ -35,12 +35,12 @@ type NewType = PositionX & PositionY; // { x :number, y :number }; // obj를 & �
 let position :NewType = { x : 10, y : 20};
 
 // homework
-type Obj = {
+type Obj = { // type alias - type 변수명(타입이 복잡할 때 변수명으로 저장)
   color? :string,
   size :number,
   readonly position :number[],
 }
-
+ 
 let test :Obj = {
   size : 123,
   position : [1, 2, 3] 
