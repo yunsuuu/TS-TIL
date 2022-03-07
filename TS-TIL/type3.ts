@@ -62,7 +62,7 @@ let userInfo :NewUser = {
   adult: true,
 }
 
-// Literal Types - 사전에 등록한 특정 문자만 허용 가능(더 엄격한 타입지정 가능)
+// Literal Types - 특정 문자나 숫자만 가질 수 있게 제한을 두는 타입(더욱 엄격한 타입지정 실드)
 // 자료를 여러개 저장할 수 있는 const 변수(const 변수의 업그레이드 버전)
 // 광범위하게 string으로 지정하는 것이 아닌 '이름'이라는 변수에는 kim or park 문자만 들어올 수 있게 지정 가능
 
