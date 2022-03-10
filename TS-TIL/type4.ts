@@ -3,7 +3,7 @@
 // 함수 타입도 type alias로 저장해서 사용할 수 있다
 // 예를 들어 숫자 2개를 파라미터로 입력할 수 있고, 숫자를 return 하는 함수를 별명을 지어서 사용하려면
 type NumOut = ( x :number, y :number ) => number;
-let NewFunction :NumOut = function(x, y) {
+let newFunction :NumOut = function(x, y) {
   return x + y
 };
 
@@ -30,15 +30,6 @@ let 회원정보 :Info = {
 회원정보.plusOne(1);
 회원정보.changeName();
 
-// 콜백함수
-function 함수1(a){
-  a(); // a = 함수2 -> a() = 함수2()
-}
-function 함수2() {
-
-}
-함수1(함수2); // 함수2 = 콜백함수
-
 // 실습2 - 아래 함수 2개 만들고 타입지정하기
 // cutZero() - 문자 입력, 맨 앞에 '0'이 있으면 0 제거 후 문자 type으로 return
 // removeDash() - 문자 입력, 모든 대시기호(-) 제거 후 그 값을 숫자 type으로 return
@@ -60,3 +51,16 @@ let result :CutType = {
 }
 result.cutZero("012345");
 result.removeDash("010-1234-5678");
+
+// 실습3 - 콜백함수
+// 실습2에서 만든 함수들을 파라미터로 넣을 수 있는 함수 제작
+// 파라미터 3개 생성(string, cutZero, removeDash)
+type FuncType1 = ( x : string ) => string
+type FuncType2 = ( x : string ) => number
+
+function callBack(x :string, func1 :FuncType1, func2 :FuncType2) {
+  let result = func1(x); // 10-1111-2222
+  let result2 = func2(result); // 1011112222
+  console.log(result2);
+}
+callBack("010-1111-2222", result.cutZero, result.removeDash);

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>객체지향 Class 문법</title>
+</head>
+<body>
+  <div>오브젝트 자료형으로 LoL 캐릭터들의 정보 정리</div>
+  <div>Class 문법 - 비슷한 오브젝트들을 쉽게 만들고 싶을 때</div>
+  <script>
+    // this = 기계로부터 새로 생성되는 오브젝트 
+    function 기계(a) {
+      this.q = a; // 새로 생성되는 오브젝트에 { q : "consume"} 추가하는 것과 동일
+      this.w = "snowball";
+    }
+
+    // const nunu = new 기계("consume"); // 코드 한줄로 오브젝트 생성
+    // const nunu = {
+    //   q : "consume",
+    //   w : "snowball",
+    // }
+
+    // const garen = new 기계("strike");
+    // const garen = {
+    //   q : "strike",
+    //   w : "courage,"
+    // }
+
+    // es6 버전(최신)
+    class Hero {
+      constructor(구멍){
+        this.q = 구멍;
+        this.w = "snowball";
+      }
+    }
+    const nunu = new Hero("consume");
+    const garen = new Hero("strike");
+
+    // prototype = 유전자 개념
+    // Hero.prototype = Hero의 유전자
+    Hero.prototype.name = "yun"
+    // Hero의 자식들은 name = "yun"을 가질 수 있음
+    // nunu.name = "yun"
+
+    // prototype chain - JS에서 오브젝트 자료 뽑을 때 일어나는 일
+    // 1) 직접 자료를 가지고 있으면 바로 출력
+    // 2) 없으면 부모 유전자를 검색
+    // 3) 없으면 부모의 부모까지 검색
+
+    // const arr = [2, 1, 4, 6, 4, 3, 5, 9];
+    // arr.sort(); // 차례로 정리 (아래처럼 한줄로 코드 작성 가능)
+    const arr = new Array(2, 1, 4, 6, 4, 3, 5, 9); // 차례로 정리
+    // new 문법 - arr라는 기계가 하나 있고, 그 기계에서 자식을 하나 뽑아줌
+    // new Array(), new Object() 등 여러 기계가 있음
+
+    Array.prototype.func = function(){} // Array.prototype = Array에 func을 추가해라
+
+    // class type
+    class Person {
+      name :string;
+      constructor(a){
+        this.name = a;
+      }
+    }
+    let 사람1 = new Person("kim");
+    let 사람2 = new Person("lee");
+  </script>
+</body>
+</html>
