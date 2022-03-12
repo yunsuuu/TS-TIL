@@ -113,11 +113,37 @@ function 함수1({student, age} :오브젝트타입){ // 파라미터 작명할 
 // 함수 파라미터에 데이터를 넣어주는 작업 = 변수 만드는 작업
 
 // 실습2 - 숫자 여러개를 입력하면 최댓값을 return 해주는 함수
-function maxNum(...a :number[]){
+function maxNum(...a :number[]) :number{
   if(a.length === 0){
     return 0; // 빈 배열이면 0을 리턴
   } else {
-    
+    let max = a[0]; // 임의로 최대값 설정 // 2
+    for(let i = 0; i < a.length; i++){
+      if(a[i] > max){ 
+        // a[0] = 2, max = 2, return 2 -> max 으로 저장
+        // a[1]= 3, max = 2, max = 3
+        // a[2] = 5, max = 3, max = 5
+        // a[3] = 1, max = 5, return 5
+        // a[4] = 4, max = 5, return 5
+        // a[5] = 8, max = 5, max = 8
+        max = a[i];
+      }
+    } return max;
   }
 }
-maxNum(1, 4, 5, 2, 3, 7); // return 7
+maxNum(2, 3, 5, 1, 4, 8); // return 8
+
+// 실습3 - object 자료를 파라미터로 입력할 수 있는 함수
+let 오브젝트1 = { user : "yun", comment : [3, 5, 4], admin : false }
+type 오브젝트1타입 = { user :string, comment :number[], admin :boolean }
+function 함수2({ user, comment, admin } :오브젝트1타입) :void{
+  console.log(user, comment, admin); // "yun", [3, 5, 4], false 출력
+}
+함수2(오브젝트1);
+
+// 실습3 - array 자료를 파라미터로 입력할 수 있는 함수
+type 함수3타입 = (number | string | boolean)[];
+function 함수3([x, y, z] :함수3타입){
+  console.log(x, y, z); // 40, wine, false 반환
+}
+함수3([40, "wine", false]);
