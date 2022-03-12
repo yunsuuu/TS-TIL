@@ -55,7 +55,7 @@ class Word {
   str :string[];
 
   constructor(...ele){
-    // Rest Parameter - 매개변수 이름 앞에 점 3개(...)를 붙여서 정의한 매개변수
+    // ...rest parameter - 매개변수 이름 앞에 점 3개(...)를 붙여서 정의한 매개변수
     // 함수에 전달된 인수들의 목록을 배열로 전달 받음
     let numbers :number[] = [];
     let strings :string[] = [];
@@ -74,3 +74,50 @@ class Word {
 let word = new Word("kim", 3, 6, "soo");
 console.log(word.num); // [3, 6]
 console.log(word.str); // ["kim", "soo"]
+
+// rest parameter
+function 함수(...a :number[]){ // rest 파라미터는 항상 [] 안에 담겨오기 때문에 타입지정도 array처럼 해주면 됨
+  // ...a : 파라미터가 무제한 들어올 수 있음
+  // 다른 파라미터가 있으면 ...a는 맨 뒤에만 사용 가능
+  console.log(a) // rest parameter 자리에 들어온 데이터는 전부 []에 담아줌 -> a = [1, 2, 3, 4, 5, 6]
+}
+함수(1, 2, 3, 4, 5, 6);
+
+// ...spread operator (array or object의 괄호를 벗기고 싶을 때)
+let arr = [1, 2, 3]
+let arr2 = [4, 5]
+let arr3 = [...arr, ...arr2] // arr3 = [1, 2, 3, 4, 5]
+
+// destructuring - array, object 안에 있는 데이터를 빼서 변수로 만들고 싶을 때
+// 아래와 같이 사용해도 되지만 코드를 간결하게 하는 새로운 문법 존재 (destructuring)
+// let 사람 = { student : true, age : 20 }
+// let student = 사람.student;
+// let age = 사람.age;
+
+let [변수1, 변수2] = ["안녕", 100]
+// 변수1 = "안녕" / 변수2 = 100
+
+// object 자료도 마찬가지로
+let { student, age } = { student : true, age : 20 } // true, 20이라는 데이터를 변수로 따로 빼서 저장하고 싶을 때
+// let { student : student, age : age } 가 생략되어 위처럼 사용
+
+// 실습 - object 안에 있던 자료를 통째로 함수 파라미터로 집어넣고 싶을 때(destructuring 문법 활용)
+// 함수 파라미터 작명할 때 destructuring 쓰면 object 넣기 쉬워짐
+let 오브젝트 = { student : true, age : 20 }
+type 오브젝트타입 = { student :boolean, age :number }
+function 함수1({student, age} :오브젝트타입){ // 파라미터 작명할 때 a, b 대신 destructuring 문법과 유사한 { student, age }를 파라미터로 넣어주기
+  console.log(student, age) // 결과값으로 true, 20 반환 
+}
+
+함수1(오브젝트) // = 함수1( { student : true, age : 20 }) 과 같음
+// 함수 파라미터에 데이터를 넣어주는 작업 = 변수 만드는 작업
+
+// 실습2 - 숫자 여러개를 입력하면 최댓값을 return 해주는 함수
+function maxNum(...a :number[]){
+  if(a.length === 0){
+    return 0; // 빈 배열이면 0을 리턴
+  } else {
+    
+  }
+}
+maxNum(1, 4, 5, 2, 3, 7); // return 7
