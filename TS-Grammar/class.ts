@@ -84,7 +84,7 @@ let user5 = new User5(); // 자식
 console.log(user5); // {y: 20} -> static을 붙인 x는 복사하지 않음
 
 // ** private / protected / public + static 사용 가능
-class ex {
+class EX {
   private static x = 10;
 }
 
@@ -118,22 +118,51 @@ test1.changeSkill("ts"); // {intro: "ts 전문가입니다"}
 
 // 실습1 - 다음 x, y, z 속성의 특징을 설명
 class Homework {
+  // 필드값은 원래 모든 Homework의 자식들에게 물려주는 속성이지만 x, y에는 static 키워드가 붙었기 때문에 Homework.x 이런 식으로 접근 가능
+  // Homework 자식들은 x, y 쓸 수 없음
   private static x = 10;
-  // Homework{} 내부에서만 수정, 조작 가능, 자식요소에는 x = 10; 물려주지 않음
+  // Homework{} class 내부에서만 수정, 조작 가능, 자식요소는 x = 10을 조작할 수 없음(물려주지 않음)
   public static y = 20;
-  // 자식요소에 y = 20 물려주지 않음
+  // class 내외부 상관없이 조작 가능, 자식요소는 y = 20을 조작할 수 없음(물려주지 않음)
   protected z = 30;
-  // private과 유사하게 class {} 내부에서 수정 가능하지만 조금 더 확장성이 높아 extends된 class 내부에서도 수정, 조작 가능
+  // private과 유사하게 class {} 내부에서 수정 가능하지만 조금 더 확장성이 높아 extends로 복사한 class 내부에서도 수정, 조작 가능
 }
 
 // 실습2 - x 속성에 숫자를 더해주는 함수
-class Homework1 {
-  private static x = 10; // extends한 class 내부에서 x값 조작 가능, static으로 자식에게 속성 물려주지 않음 
+class Work {
+  // static 키워드 붙은 값들은 자식요소에서 조작할 수 없음(부모 class에 직접 부여되는 속성)
+  private static x = 10;
   public static y = 20;
 
-  addOne(a :number){
-    return 10 + a;
+  static addOne(a :number){ // static 붙인 이유 -> class 끝나고 함수 불러올 때 Work.addOne(3)으로 불러왔기 때문
+    Work.x += a; // Work.x = Work.x + a;
+  }
+  static printX(){
+    console.log(Work.x);
   }
 }
-Homework1.addOne(3); // 10 + 3 = 13
-Homework1.addOne(4) // 10 + 4 = 14
+Work.addOne(3); // addOne() 앞에 static 키워드 붙인 이유
+Work.addOne(10);
+Work.printX();
+
+// 실습3 - 웹 요소 애니메이팅
+class Square {
+  constructor(width :number, height :number, color :string){
+    // constructor 이용해서 새로 뽑은 object들은 width, height, color 입력할 수 있게
+  }
+  draw(){
+    let a = Math.random();
+    let canvas = `<div style="position: relative; 
+      top: ${a * 400}px;
+      left: ${a * 400}px;
+      width: ${this.width}px;
+      height: ${this.height}px;
+      background: ${this.color}">` 
+  }
+}
+
+let square = new Square(30, 30, "red");
+square.draw();
+square.draw();
+square.draw();
+square.draw();
