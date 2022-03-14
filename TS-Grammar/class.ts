@@ -147,20 +147,21 @@ Work.printX();
 
 // 실습3 - 웹 요소 애니메이팅
 class Square {
-  constructor(width :number, height :number, color :string){
+  constructor(public width :number, public height :number, public color :string){
     // constructor 이용해서 새로 뽑은 object들은 width, height, color 입력할 수 있게
+    // public 키워드 붙으면 자식요소가 조작, 수정 가능
   }
   draw(){
-    let a = Math.random();
+    let a = Math.random(); // 0-1사이 랜덤수
     let canvas = `<div style="position: relative; 
-      top: ${a * 400}px;
-      left: ${a * 400}px;
+      top: ${a * 400}px; // 0~400px 사이로 무작위 배치
+      left: ${a * 400}px; // 0~400px 사이로 무작위 배치
       width: ${this.width}px;
       height: ${this.height}px;
-      background: ${this.color}">` 
+      background: ${this.color}"></div>`;
+    document.body.insertAdjacentHTML("beforeend", canvas);
   }
 }
-
 let square = new Square(30, 30, "red");
 square.draw();
 square.draw();

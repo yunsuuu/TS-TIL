@@ -19,19 +19,20 @@ let square :Sqaure= { // Sqarue 타입지정하지 않아도 자동으로 string
 // 실습1 - 학생, 선생 변수의 타입 지정하기
 interface Type1 { name :string }
 interface Type2 { name :string, age :number }
+interface Type2 extends Type1 { age :number }
 
-// 위의 코드를 extends로 복사하여 name 중복 제거 (interface 장점)
 interface Student { name :string }
 // interface Student { score :number }
 // Student { name :string, scroe :number } - interface는 중복선언해도 에러 발생X
 interface Teacher extends Student { age :number }
-// interface도 & 기호 사용 가능 - let 변수 :Student & Teacher = { name : "kim", age : 30 }
+// interface도 & 기호 사용 가능 
+// -> let 변수명 :Student & Teacher = { name : "kim", age : 30 }
 
 let 학생 :Student = { name : "kim" };
 let 선생 :Teacher = { name : "yun", age : 25 };
 
 // type alias의 경우 extends 안 되고, & 기호로 type 교차하여 오브젝트 합칠 수 있음(중복코드제거)
-// intersection type 교차타입 - 타입을 복사하는 것이 아니라 두 타입을 전부 만족하는 타입
+// -> intersection type 교차타입 - 타입을 복사하는 것이 아니라 두 타입을 전부 만족하는 타입
 type Animal  = { name :string }
 // type Animal = { score :number } - type은 중복선언 불가
 type Cat = { age :number } & Animal // 중복코드제거
@@ -44,7 +45,6 @@ interface Product {
   serialNumber :number,
   model :string[],
 }
-
 let product :Product = {
   brand : "Samsung",
   serialNumber : 1360,
